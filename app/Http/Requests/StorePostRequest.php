@@ -29,21 +29,22 @@ class StorePostRequest extends FormRequest
         ];
     }
 
-    public function messages(){
-        return [
-            'title.required' => 'El :attribute es requerido',
-            // 'slug.required' => 'El slug es requerido',
-            // 'category.required' => 'La categoria es requerida',
-            // 'content.required' => 'El contenido es requerido',
-        ];
-    }
+    //configuracion de mensajes y atributos de los errorse que se muestren
+    // public function messages(){
+    //     return [
+    //         'title.required' => 'El :attribute es requerido',
+    //         // 'slug.required' => 'El slug es requerido',
+    //         // 'category.required' => 'La categoria es requerida',
+    //         // 'content.required' => 'El contenido es requerido',
+    //     ];
+    // }
 
-    public function attributes(){
-        return [
-            'title' => 'Titulo',
-            'slug' => 'Slug',
-            'category' => 'Categoria',
-            'content' => 'Contenido',
-        ];
-    }
+    // public function attributes(){
+    //     return [
+    //         'title' => 'Titulo',
+    //         'slug' => 'Slug',
+    //         'category' => 'Categoria',
+    //         'content' => 'Contenido',
+    //     ];
+    // }
 }
