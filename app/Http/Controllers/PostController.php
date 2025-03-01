@@ -22,7 +22,13 @@ class PostController extends Controller
 
     //funcion para guardar el nuevo post
     public function store(Request $request){
-
+        //validar datos o campos
+        $request->validate([
+            'title' => ['required', 'min:5', 'max:255'],
+            'slug' => 'required|unique:posts',
+            'category' => 'required',
+            'content' => 'required',
+        ]);
         //asignacion masiva
         Post::create($request->all());
         // $post = new Post();
@@ -66,7 +72,12 @@ class PostController extends Controller
     // Actualizar post
     public function update(Request $request,Post $post){
         // $post = Post::find($post);
-
+        $request->validate([
+            'title' => ['required', 'min:5', 'max:255'],
+            'slug' => "required|unique:posts,slug,{$post->id}",
+            'category' => 'required',
+            'content' => 'required',
+        ]);
         $post->update($request->all());
 
         // $post->title = $request->title;

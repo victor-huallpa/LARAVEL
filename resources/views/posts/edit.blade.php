@@ -9,18 +9,27 @@
         
         <label for="">
         Titulo:
-        <input type="text" name="title" value="{{ $post->title }}">
+        <input type="text" name="title" value="{{ old('title', $post->title) }}">
         </label>
+        @error('title')  
+            <p>{{ $message }} </p>
+        @enderror
         <br>
         <label for="">
             Slug:
-            <input type="text" name="slug" value="{{ $post->slug }}">
+            <input type="text" name="slug" value="{{ old('slug', $post->slug) }}">
         </label>
+        @error('slug')  
+            <p> {{ $message }} </p>
+        @enderror
         <br>
         <label for="">
             Categoria:
-            <input type="text" name="category" id="category" value="{{ $post->category }}">
+            <input type="text" name="category" id="category" value="{{ old('category', $post->category) }}">
         </label>
+        @error('category')  
+            <p>{{ $message }}</p>
+        @enderror
         <br>
         <br>
         <br>
@@ -28,10 +37,13 @@
         <label for="">
             Contenido:
             <textarea name="content">
-                {{ $post->content }}
+                {{ old('content', $post->content) }}
             </textarea>
 
         </label>
+        @error('content')  
+            <p>{{ $message }}</p>
+        @enderror
 
         <br><br>
         <button type="submit">
