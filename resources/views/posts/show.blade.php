@@ -1,6 +1,6 @@
 <x-app-layout>
-    <a href="/posts">Volver a Post</a>
-    <h1>Titulo: {{ $post->title.' Post: '}}</h1>
+    <a href="{{route('posts.index')}}">Volver a Post</a>
+    <h1>Titulo: {{ $post->title}}</h1>
     <p>
         <b>Categoria: </b>{{$post->category }}
     </p>
@@ -8,9 +8,9 @@
         {{$post->content}}
     </p>
 
-    <a href="/posts/{{$post->id}}/edit">Editar Post</a>
+    <a href="{{route('posts.edit', $post)}}">Editar Post</a>
 
-    <form action="/posts/{{$post->id}}" method="post">
+    <form action="{{route('posts.destroy', $post)}}" method="post">
         @csrf
         @method('DELETE')
 

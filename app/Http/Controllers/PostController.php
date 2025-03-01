@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->get();
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
 
         return view('posts.index', compact('posts'));    
     }
@@ -20,26 +20,35 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    //funcion para guardar el bueno post
+    //funcion para guardar el nuevo post
     public function store(Request $request){
-        $post = new Post();
 
-        $post->title = $request->title;
-        $post->category = $request->category;
-        $post->content = $request->content;
-        $post->published_at = now();
+        //asignacion masiva
+        Post::create($request->all());
+        // $post = new Post();
 
-        $post->save();
+        // $post->title = $request->title;
+        // $post->slug = $request->slug;
+        // $post->category = $request->category;
+        // $post->content = $request->content;
+        // $post->published_at = now();
 
-        return redirect('/posts');
+        // $post->save();
+
+        return redirect()->route('posts.index');
         // return $request->all();
         // return request()->all();
     }
 
     //funcion para mostrar la lista de los titulos de los post
-    public function show($post)
+    public function show(Post $post)
     {
-        $post = Post::find($post);
+
+        //si se agrega Post en los parametros ya no requiero ahcer la busqueda
+        //yaque se realiza automaticamente
+        // $post = Post::find($post);
+
+
         // return view('posts.show', [
         //     'post' => $post, 
         //     'category' => $category
@@ -49,32 +58,35 @@ class PostController extends Controller
     }
 
     //ruta par aver la vista de editar post
-    public function edit($post){
-        $post = Post::find($post);
+    public function edit(Post $post){
+        // $post = Post::find($post);
         return view('posts.edit', compact('post'));
     }
 
     // Actualizar post
-    public function update(Request $request, $post){
-        $post = Post::find($post);
+    public function update(Request $request,Post $post){
+        // $post = Post::find($post);
 
-        $post->title = $request->title;
-        $post->category = $request->category;
-        $post->content = $request->content;
-        $post->published_at = now();
-        $post->save();
+        $post->update($request->all());
 
-        return redirect("/posts/{$post->id}");
+        // $post->title = $request->title;
+        // $post->slug = $request->slug;
+        // $post->category = $request->category;
+        // $post->content = $request->content;
+        // $post->published_at = now();
+        // $post->save();
+
+        return redirect()->route('posts.show', $post);
         // return "Aqui se actualizara el {$post}";
 
     }
 
     //funcion para eliminar un post
-    public function destroy($post){
-        $post = Post::find($post);
+    public function destroy(Post $post){
+        // $post = Post::find($post);
         $post->delete();
 
-        return redirect('/posts');
+        return redirect()->route('posts.index');
 
         // return "eliminando el Post {$post}"; 
 

@@ -1,14 +1,19 @@
 <x-app-layout>
-    <a href="/posts">Volver a Post</a>
+    <a href="{{route('posts.index')}}">Volver a Post</a>
 
     <h1>Formulario para crear un nuevo post</h1>
-    <form action="/posts" method="post">
+    <form action="{{route('posts.store')}}" method="post">
         
         @csrf
         
         <label for="">
         Titulo:
         <input type="text" name="title" id="title">
+        </label>
+        <br>
+        <label for="">
+            Slug:
+            <input type="text" name="slug" id="slug">
         </label>
         <br>
         <label for="">
@@ -27,7 +32,7 @@
 
         <br><br>
         <button type="submit">
-            Crear Psot
+            Crear Post
         </button>
     </form>
  

@@ -15,6 +15,21 @@ class Post extends Model
 
     use HasFactory;
 
+    //caudo queremos habiliar la insersion masiva y decir en que campos se
+    //permitiran la inserciones
+    // protected $fillable = [
+    //     'title',
+    //     'slug',
+    //     'category',
+    //     'content',
+    //     'published_at',
+    // ];
+
+    //cuand oqueremos habilitar las inserciones masivas pero, excluyendo
+    //los campos a los cuales no seingresaran datos
+    protected $guarded = [
+        'is_active',
+    ];
     protected $table = 'posts';
 
     protected function casts():array
@@ -39,6 +54,11 @@ class Post extends Model
                 return ucfirst($value);
             }
         );
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
 
