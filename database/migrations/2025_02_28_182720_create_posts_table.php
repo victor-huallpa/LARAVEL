@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('content');  
             $table->string('category'); 
 
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->nullable();
             $table->boolean('is_active')->default(true);
 
             $table->timestamps();

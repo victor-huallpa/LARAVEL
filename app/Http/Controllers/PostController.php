@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Mail\PostCreateMail;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -36,8 +38,7 @@ class PostController extends Controller
         //     //nombres de los campos 
         //     'title' => 'Titulo',
         // ]);
-        //asignacion masiva
-        Post::create($request->all());
+
         // $post = new Post();
 
         // $post->title = $request->title;
@@ -47,6 +48,12 @@ class PostController extends Controller
         // $post->published_at = now();
 
         // $post->save();
+
+        //asignacion masiva
+        $post = Post::create($request->all());
+
+        //correo electronico
+        Mail::to('prueva@example.com')->send(new PostCreateMail($post));
 
         return redirect()->route('posts.index');
         // return $request->all();
