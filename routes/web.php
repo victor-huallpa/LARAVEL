@@ -11,7 +11,15 @@ Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('/posts/create', [PostController::class, 'create']);
 
-Route::get('/posts/{post}/{category?}', [PostController::class, 'show']);
+Route::post('/posts', [PostController::class, 'store']);
+
+Route::get('/posts/{post}', [PostController::class, 'show']);
+
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+
+Route::put('/posts/{post}', [PostController::class, 'update']);
+
+Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 
 
 //tipos de peticiones
@@ -24,7 +32,7 @@ Route::get('/posts/{post}/{category?}', [PostController::class, 'show']);
 
 Route::get('prueba', function(){
 
-    // crear nuevo registro
+// crear nuevo registro
     // $post = new Post;
 
     // $post->title = 'mi primero titulo';
@@ -36,7 +44,7 @@ Route::get('prueba', function(){
 
     // return $post;
 
-    // actualizar registro
+// actualizar registro
 
     // busqueda mediante id
     // $post = Post::find(1);
@@ -49,9 +57,9 @@ Route::get('prueba', function(){
     // return $post;
 
 
-    // traer regsitros de la base de datos
-    $post = Post::find(1);
-    dd($post->is_active);
+// traer regsitros de la base de datos
+    // $post = Post::find(1);
+    // dd($post->is_active);
 
 
     /* 
@@ -69,7 +77,7 @@ Route::get('prueba', function(){
     return $post;
     */
 
-    // eliminar un registro
+// eliminar un registro
 
     // $post = Post::find(1);
     // $post->delete();

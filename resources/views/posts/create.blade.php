@@ -1,11 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Create| </title>
-</head>
-<body>
-    <h1>A qui se muestra el formulario para crear un post</h1>
-</body>
-</html>
+<x-app-layout>
+    <a href="/posts">Volver a Post</a>
+
+    <h1>Formulario para crear un nuevo post</h1>
+    <form action="/posts" method="post">
+        
+        @csrf
+        
+        <label for="">
+        Titulo:
+        <input type="text" name="title" id="title">
+        </label>
+        <br>
+        <label for="">
+            Categoria:
+            <input type="text" name="category" id="category">
+        </label>
+        <br>
+        <br>
+        <br>
+
+        <label for="">
+            Contenido:
+            <textarea name="content"></textarea>
+
+        </label>
+
+        <br><br>
+        <button type="submit">
+            Crear Psot
+        </button>
+    </form>
+ 
+</x-app-layout>
