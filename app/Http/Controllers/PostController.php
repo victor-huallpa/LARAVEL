@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -21,14 +22,20 @@ class PostController extends Controller
     }
 
     //funcion para guardar el nuevo post
-    public function store(Request $request){
+    public function store(StorePostRequest $request){
         //validar datos o campos
-        $request->validate([
-            'title' => ['required', 'min:5', 'max:255'],
-            'slug' => 'required|unique:posts',
-            'category' => 'required',
-            'content' => 'required',
-        ]);
+        // $request->validate([
+        //     'title' => ['required', 'min:5', 'max:255'],
+        //     'slug' => 'required|unique:posts',
+        //     'category' => 'required',
+        //     'content' => 'required',
+        // ],[
+        //     //mensajes de error
+        //     'title.required' => 'El :attribute es requerido',
+        // ],[
+        //     //nombres de los campos 
+        //     'title' => 'Titulo',
+        // ]);
         //asignacion masiva
         Post::create($request->all());
         // $post = new Post();
