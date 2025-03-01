@@ -6,25 +6,25 @@
         
         @csrf
         
-        <label for="">
+        <label>
         Titulo:
-        <input type="text" name="title" id="title">
+        <input type="text" name="title">
         </label>
         <br>
-        <label for="">
+        <label>
             Slug:
-            <input type="text" name="slug" id="slug">
+            <input type="text" name="slug">
         </label>
         <br>
-        <label for="">
+        <label >
             Categoria:
-            <input type="text" name="category" id="category">
+            <input type="text" name="category">
         </label>
         <br>
         <br>
         <br>
 
-        <label for="">
+        <label >
             Contenido:
             <textarea name="content"></textarea>
 
